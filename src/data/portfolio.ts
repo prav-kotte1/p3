@@ -110,11 +110,11 @@ export const TECH_STACK = [
 //     },
 // ];
 
-// export const CURRENTLY_LEARNING = {
+export const CURRENTLY_LEARNING = {
 //     title: "Building Microservices with Go",
 //     channel: "Nic Jackson",
 //     thumbnail: "https://i.ytimg.com/vi/VzBGi_n65iU/hqdefault.jpg",
 //     link: "https://www.youtube.com/watch?v=VzBGi_n65iU",
 //     progress: 42,
 //     watching: true
-// };
+};
