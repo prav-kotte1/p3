@@ -4,7 +4,7 @@ import { ImageResponse } from 'next/og';
 export const runtime = 'edge';
 
 // Image metadata
-export const alt = 'Prateek Dwivedi - Full Stack Engineer';
+export const alt = 'Pravallika Kotte - Software Engineer & Developer';
 export const size = {
     width: 1200,
     height: 630,

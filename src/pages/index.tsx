@@ -190,41 +190,7 @@ export default function Portfolio() {
               </motion.div>
             </section>
 
-            {/* ABOUT SECTION - Dashboard Style */}
-            <section className="mb-10">
-              <SpotlightCard className="p-6 md:p-8">
-                <div className="flex flex-col gap-6">
-                  {/* Top Area: Bio */}
-                  <div>
-                    <h2 className={`${spaceGrotesk.className} text-lg font-bold text-black dark:text-white mb-2`}>About</h2>
-                    <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm max-w-3xl">
-                      I&apos;m a <span className="text-black dark:text-white font-medium">Full Stack Engineer</span> based in <span className="text-accent-400 font-medium">India</span>, building products that solve real problems.
-                      I work across the entire stack—<span className="text-neutral-700 dark:text-neutral-300">UI/UX to deployment</span>—shipping fast, learning faster.
-                    </p>
-                  </div>
-
-                  {/* Horizontal Divider */}
-                  <div className="h-px bg-zinc-800/20 w-full" />
-
-                  {/* Bottom Area: Status Bar */}
-                  <div className="grid grid-cols-2 gap-y-4 md:flex md:flex-nowrap md:items-center md:gap-x-8 md:gap-y-3">
-
-                    {/* Location */}
-                    <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-2 shrink-0">
-                      <div className="flex items-center gap-2">
-                        <MapPin size={12} className="text-zinc-500" />
-                        <span className="text-[9px] font-bold text-zinc-600 uppercase tracking-wider md:hidden">Location</span>
-                      </div>
-                      <span className="text-xs font-medium text-neutral-700 dark:text-zinc-300">India <span className="text-neutral-500 dark:text-zinc-500 text-[10px]">(UTC+5:30)</span></span>
-                    </div>
-
-                    <span className="opacity-10 hidden md:block text-zinc-500">•</span>
-
-                    
-                  </div>
-                </div>
-              </SpotlightCard>
-            </section>
+            
 
             {/* EXPERIENCE SECTION */}
             <section className="mb-8">
