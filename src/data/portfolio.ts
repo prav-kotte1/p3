@@ -19,15 +19,15 @@ export const PERSONAL_INFO = {
 
 export const PROJECTS = [
     {
-        id: "voice-expense-tracker",
-        title: "Voice Expense Tracker",
-        description: "A financial dashboard that listens. Log expenses via natural language using custom Regex parsing and Web Speech API.",
-        tech: ["React", "Node.js", "MongoDB", "Web Speech API"],
-        link: "https://voex.prateekdwivedi.me/",
-        gradient: "from-blue-500/20 to-cyan-500/20",
-        Diagram: VoiceTrackerDiagram,
-        featured: true,
-    },
+    id: "voice-expense-tracker",
+    title: "Reliable UDP P2P File System",
+    description: "A decentralized CLI file-sharing system built with a custom reliability protocol. Features packet sequencing, multithreaded peer discovery, and 99%+ transfer accuracy over unreliable transport.",
+    tech: ["Python", "UDP Sockets", "Multithreading", "Custom Protocols"],
+    link: "https://github.com/prav-kotte1/pico",
+    gradient: "from-indigo-500/20 to-purple-500/20",
+    Diagram: VoiceTrackerDiagram, // Update this to your new diagram component
+    featured: true,
+},
     {
         id: "cinequest",
         title: "Phishing URL Detection",
@@ -61,7 +61,7 @@ export const PROJECTS = [
 export const EXPERIENCE = [
     {
         company: "ABV-IIITM Gwalior",
-        role: "Research Intern",
+        role: "Student Researcher",
         date: "May 2025 - Jul 2025",
         bullets: [
             "Conducted a comparative analysis of LSTM and CNN models combined through model fusion to predict phishing URL detection. ",

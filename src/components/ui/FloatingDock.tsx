@@ -2,19 +2,53 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Home, Github, FileText, Mail } from "lucide-react";
+import { 
+  Home, 
+  Github, 
+  FileText, 
+  Mail, 
+  Linkedin, 
+  Terminal, 
+  Trophy, 
+  Code 
+} from "lucide-react"; 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const items = [
     {
         icon: Home,
         label: "Top",
-        onClick: () => window.scrollTo({ top: 0, behavior: 'smooth' })
+        onClick: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+        mobileHide: true // We can hide this on tiny screens if needed
     },
     {
         icon: Github,
         label: "GitHub",
         href: "https://github.com/prav-kotte1",
+        external: true
+    },
+    {
+        icon: Linkedin,
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/kotte-pravallika/",
+        external: true
+    },
+    {
+        icon: Terminal, 
+        label: "LeetCode",
+        href: "https://leetcode.com/u/pravallika67/",
+        external: true
+    },
+    {
+        icon: Trophy, 
+        label: "CodeForces",
+        href: "https://codeforces.com/profile/pkotte",
+        external: true
+    },
+    {
+        icon: Code, 
+        label: "CodeChef",
+        href: "https://www.codechef.com/users/deft_foxes_93",
         external: true
     },
     {
@@ -38,14 +72,11 @@ export const FloatingDock = () => {
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-
-            // Hide when scrolling down fast, show when scrolling up or idle
             if (currentScrollY > lastScrollY && currentScrollY > 200) {
                 setVisible(false);
             } else {
                 setVisible(true);
             }
-
             setLastScrollY(currentScrollY);
         };
 
@@ -55,50 +86,49 @@ export const FloatingDock = () => {
 
     return (
         <motion.nav
-            className="fixed bottom-6 left-1/2 z-50"
+            className="fixed bottom-4 md:bottom-6 left-1/2 z-50 w-max max-w-[95vw]"
             initial={{ y: 100, x: "-50%", opacity: 0 }}
             animate={{
-                y: visible ? 0 : 80,
+                y: visible ? 0 : 100,
                 x: "-50%",
                 opacity: visible ? 1 : 0
             }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-            <div className="flex items-center gap-1 px-2 py-2 rounded-2xl bg-white/80 dark:bg-zinc-950/60 backdrop-blur-xl border border-zinc-200 dark:border-zinc-800/50 shadow-lg shadow-black/5 dark:shadow-black/20">
+            <div className="flex items-center gap-0.5 md:gap-1 px-1.5 py-1.5 md:px-2 md:py-2 rounded-2xl bg-white/90 dark:bg-zinc-900/80 backdrop-blur-xl border border-zinc-200 dark:border-zinc-800 shadow-xl">
                 <TooltipProvider delayDuration={0}>
                     {items.map((item, i) => {
                         const Icon = item.icon;
 
                         const content = (
                             <motion.div
-                                className="p-2.5 rounded-xl text-neutral-600 dark:text-zinc-500 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-all cursor-pointer"
+                                // Smaller padding on mobile (p-1.5 vs p-2.5)
+                                className="p-1.5 md:p-2.5 rounded-xl text-zinc-500 hover:text-black dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors"
                                 whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
+                                whileTap={{ scale: 0.9 }}
                             >
-                                <Icon size={18} strokeWidth={1.5} />
+                                {/* Smaller icon size on mobile (16 vs 18) */}
+                                <Icon className="w-4 h-4 md:w-[18px] md:h-[18px]" strokeWidth={1.5} />
                             </motion.div>
-                        );
-
-                        const trigger = item.href ? (
-                            <a
-                                href={item.href}
-                                target={item.external ? "_blank" : undefined}
-                                rel={item.external ? "noopener noreferrer" : undefined}
-                            >
-                                {content}
-                            </a>
-                        ) : (
-                            <button onClick={item.onClick}>
-                                {content}
-                            </button>
                         );
 
                         return (
                             <Tooltip key={i}>
                                 <TooltipTrigger asChild>
-                                    {trigger}
+                                    <div className={item.mobileHide ? "hidden sm:block" : "block"}>
+                                        {item.href ? (
+                                            <a href={item.href} target="_blank" rel="noopener noreferrer">
+                                                {content}
+                                            </a>
+                                        ) : (
+                                            <button onClick={item.onClick} type="button">
+                                                {content}
+                                            </button>
+                                        )}
+                                    </div>
                                 </TooltipTrigger>
-                                <TooltipContent className="text-xs font-medium">
+                                {/* Hide tooltips on touch devices to prevent "sticky" hover states */}
+                                <TooltipContent className="hidden md:block text-xs font-medium">
                                     {item.label}
                                 </TooltipContent>
                             </Tooltip>
